@@ -1,24 +1,13 @@
 class CommentsController < ApplicationController
-    def index
-    end
 
-    def show
-    end
-
-    def new
-    end
-
-    def edit
-    end
+    http_basic_authenticate_with name: "admin", password: "password",
+        only: :destroy
 
     def create
         @article = Article.find(params[:article_id])
         @comment = @article.comments.create(comment_params)
 
         redirect_to article_path(@article)
-    end
-
-    def update
     end
 
     def destroy
