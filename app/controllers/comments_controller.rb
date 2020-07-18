@@ -22,6 +22,10 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+        @article = Article.find(params[:article_id])
+        @article.comments.destroy(params[:id])
+
+        redirect_to article_path(@article)
     end
 
     private
