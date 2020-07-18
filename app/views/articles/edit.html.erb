@@ -1,5 +1,8 @@
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
+<h1>Edit Article</h1>
 
+<%= form_with(model: @article, local: true) do |form| %>
+
+    <!-- TODO: this is identical to 'new.html.erb'. Make this a template called by each view. -->
     <% if @article.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -13,8 +16,6 @@
         </div>
     <% end %>
 
-    <!-- Note: Rails automatically wraps fields with errors in
-        <div> tags with class 'field_with_errors' -->
     <p>
         <%= form.label :title %><br />
         <%= form.text_field :title %>
@@ -22,12 +23,13 @@
 
     <p>
         <%= form.label :text %><br />
-        <%= form.text_area :text %>
+        <%= form.text_area :text %><br />
     </p>
 
     <p>
         <%= form.submit %>
     </p>
+
 <% end %>
 
 <%= link_to 'Back', articles_path %>
